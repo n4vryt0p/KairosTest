@@ -1,0 +1,60 @@
+﻿@model KairosTest.Entities.Buku
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<!--begin::Container-->
+<div id="kt_content_container" class="container-fluid">
+	<div class="card card-docs mb-2">
+		<!--begin::Card header-->
+		<div class="card-header">
+			<h3 class="card-title align-items-start flex-column">
+				<span class="card-label fw-bolder text-dark">Edit Buku: @Model.JudulBuku</span>
+			</h3>
+		</div>
+		<!--end::Card header-->
+		<!--begin::Card body-->
+		<div class="card-body">
+            <form asp-action="Edit" id="crudBuku">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="d-flex flex-column mb-8 fv-row">
+                    <label asp-for="JudulBuku" class="control-label">Judul Buku</label>
+                    <input asp-for="JudulBuku" class="form-control" />
+                    <span asp-validation-for="JudulBuku" class="text-danger"></span>
+                </div>
+                <div class="d-flex flex-column mb-8 fv-row">
+                    <label asp-for="Pengarang" class="control-label"></label>
+                    <input asp-for="Pengarang" class="form-control" />
+                    <span asp-validation-for="Pengarang" class="text-danger"></span>
+                </div>
+                <div class="d-flex flex-column mb-8 fv-row">
+                    <label asp-for="JenisBuku" class="control-label">Jenis Buku</label>
+                    <input asp-for="JenisBuku" class="form-control" />
+                    <span asp-validation-for="JenisBuku" class="text-danger"></span>
+                </div>
+                <div class="d-flex flex-column mb-8 fv-row">
+                    <label asp-for="HargaSewa" class="control-label">Harga Sewa (Rp)</label>
+                    <input asp-for="HargaSewa" class="form-control" type="number" />
+                    <span asp-validation-for="HargaSewa" class="text-danger"></span>
+                </div>
+                <div class="modal-footer">
+                    <a asp-action="Index">Kembali</a>
+                    <button type="submit" value="Simpan" class="btn btn-primary" id="submitBuku" >
+						<span class="indicator-label">Simpan</span>
+						<span class="indicator-progress">Please wait... 
+						<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+		<!--end::Card body-->
+	    </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/js/createbuku.js" type="text/javascript" asp-append-version="true"></script>
+}

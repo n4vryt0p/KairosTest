@@ -1,0 +1,117 @@
+﻿@model KairosTest.Entities.Buku
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div id="kt_content_container" class="container-fluid">
+	<div class="card card-docs mb-2">
+		<!--begin::Card header-->
+		<div class="card-header">
+			<h3 class="card-title align-items-start flex-column">
+				<span class="card-label fw-bolder text-dark">Buku: @Model.JudulBuku</span>
+			</h3>
+		</div>
+		<!--end::Card header-->
+		<!--begin::Card body-->
+		<div class="card-body">
+            <dl class="row">
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.JudulBuku)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.JudulBuku)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.Pengarang)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.Pengarang)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.JenisBuku)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.JenisBuku)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.HargaSewa)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.HargaSewa)
+                </dd>
+            </dl>
+            <form asp-action="Delete" id="crudBuku">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" value="Hapus" class="btn btn-danger" id="submitBuku" >
+					<span class="indicator-label">Hapus</span>
+					<span class="indicator-progress">Please wait... 
+					<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                </button> |
+                <a asp-action="Index">Kembali</a>
+            </form>
+		<!--end::Card body-->
+	    </div>
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function() {
+			var el = document.querySelector("#submitBuku");
+			$("#crudBuku").submit(function (e) {
+				e = e || window.event;
+				e.preventDefault(); // avoid to execute the actual submit of the form
+				Swal.fire({
+					text: "Apakah anda yakin untuk menghapus?",
+					icon: "info",
+					buttonsStyling: !1,
+					confirmButtonText: "Ok!",
+					showCancelButton: true,
+					customClass: {
+						confirmButton: "btn btn-primary",
+						cancelButton: "btn btn-secondary"
+					}
+				}).then((function (e) {
+					if (e.isConfirmed){
+                        var form = $(this);
+						var actionUrl = form.attr('action');
+						el.setAttribute("data-kt-indicator", "on");
+						el.disabled = !0;
+						$.ajax({
+							type: "POST",
+							url: actionUrl,
+							data: form.serialize(), // serializes the form's elements.
+							success: function (data) {
+								Swal.fire({
+									text: "Sukses, data buku terhapus",
+									icon: "success",
+									buttonsStyling: !1,
+									confirmButtonText: "Ok!",
+									customClass: {
+										confirmButton: "btn btn-primary"
+									}
+								}).then((function (e) {
+									window.location.href = "./Bukus";
+								}));
+							},
+							error: function (data) {
+								Swal.fire({
+									text: "Server eror, Silahkan hubungi IT",
+									icon: "error",
+									buttonsStyling: !1,
+									confirmButtonText: "Ok!",
+									customClass: {
+										confirmButton: "btn btn-primary"
+									}
+								}).then((function (e) {
+									el.removeAttribute("data-kt-indicator");
+									el.disabled = !1;
+								}));
+							}
+						});
+					}
+				}));
+			});
+		});
+    </script>
+}

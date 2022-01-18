@@ -1,0 +1,61 @@
+﻿@model KairosTest.Models.UsersViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<!--begin::Container-->
+<div id="kt_content_container" class="container-fluid">
+	<div class="card card-docs mb-2">
+		<!--begin::Card header-->
+		<div class="card-header">
+			<h3 class="card-title align-items-start flex-column">
+				<span class="card-label fw-bolder text-dark">Tambah Buku</span>
+			</h3>
+		</div>
+		<!--end::Card header-->
+		<!--begin::Card body-->
+		<div class="card-body">
+            <form asp-action="Create" id="crudUser">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="d-flex flex-column mb-8 fv-row">
+                    <label asp-for="UserName" class="control-label">Nama User</label>
+                    <input asp-for="UserName" class="form-control" />
+                </div>
+                <div class="d-flex flex-column mb-8 fv-row">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" type="email" />
+                </div>
+                <div class="d-flex flex-column mb-8 fv-row">
+                    <label asp-for="CurrentPassword" class="control-label">Password Lama</label>
+                    <input asp-for="CurrentPassword" class="form-control" type="password" />
+                </div>
+                <div class="d-flex flex-column mb-8 fv-row">
+                    <label asp-for="Password" class="control-label">Password Baru</label>
+                    <input asp-for="Password" class="form-control" type="password" />
+                </div>
+                <div class="d-flex flex-column mb-8 fv-row">
+                    <label asp-for="Role" class="control-label">Role</label>
+					<select class="form-control" id="Role" name="Role">
+						<option value="Admin">Admin</option>
+						<option value="Penyewa">Penyewa</option>
+					</select>
+                </div>
+                <div class="modal-footer">
+                    <a asp-action="Index">Kembali</a>
+                    <button type="submit" value="Simpan" class="btn btn-primary" id="submitUser" >
+						<span class="indicator-label">Simpan</span>
+						<span class="indicator-progress">Please wait... 
+						<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                    </button>
+                </div>
+            </form>
+		<!--end::Card body-->
+	    </div>
+    </div>
+</div>
+<!--end::Container-->
+
+@section Scripts {
+    <script src="~/js/createuser.js" type="text/javascript" asp-append-version="true"></script>
+}
+

@@ -1,0 +1,51 @@
+﻿@model KairosTest.Entities.Buku
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div id="kt_content_container" class="container-fluid">
+	<div class="card card-docs mb-2">
+		<!--begin::Card header-->
+		<div class="card-header">
+			<h3 class="card-title align-items-start flex-column">
+				<span class="card-label fw-bolder text-dark">Detail Buku: @Model.JudulBuku</span>
+			</h3>
+		</div>
+		<!--end::Card header-->
+		<!--begin::Card body-->
+		<div class="card-body">
+            <dl class="row">
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.JudulBuku)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.JudulBuku)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.Pengarang)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.Pengarang)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.JenisBuku)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.JenisBuku)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.HargaSewa)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.HargaSewa)
+                </dd>
+            </dl>
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+                <a asp-action="Index">Back to List</a>
+            </div>
+		<!--end::Card body-->
+	    </div>
+    </div>
+</div>

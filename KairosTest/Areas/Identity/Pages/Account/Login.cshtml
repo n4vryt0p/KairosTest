@@ -1,0 +1,88 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+<!--begin::Authentication - Sign-in -->
+<div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed" style="background-image: url(./assets/media/illustrations/sketchy-1/14-dark.png)">
+	<!--begin::Content-->
+	<div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
+		<!--begin::Logo-->
+		<a href="identity/account/login" class="mb-12">
+			<svg width="280" height="112.97812078105787" viewBox="0 0 280 112.97812078105787" class="css-1j8o68f"><defs id="SvgjsDefs1050"></defs><g id="SvgjsG1051" featurekey="nameFeature-0" transform="matrix(13.008000062381416,0,0,13.008000062381416,31.809081050829157,-409.48761817468426)" fill="#9de3ff"><path d="M7.6 39.76 c-0.76 -0.8 -0.4 -1.88 -0.16 -2.84 c0.28 -1.08 0.76 -2.12 0.96 -3.2 c0.24 -1.16 -0.36 -1.6 -1.48 -1.16 c-1.76 0.64 -3.28 1.72 -4.6 3.04 c-1.16 1.16 -2.24 2.32 -3.4 3.44 c-0.28 0.28 -0.56 0.88 -1.12 0.56 c-0.36 -0.2 -0.24 -0.72 -0.16 -1.08 c0.36 -2.28 1.52 -4.2 2.44 -6.28 c0.08 -0.2 0.32 -0.32 0.44 -0.2 c0.12 0.2 0.2 0.52 0.12 0.72 c-0.48 1.16 -1.04 2.32 -1.52 3.48 c-0.2 0.48 -0.44 1 -0.56 1.48 c-0.04 0.2 -0.12 0.76 0.36 0.28 c2 -1.88 3.68 -4.04 6.16 -5.36 c1.04 -0.56 2.16 -1.76 3.4 -0.8 c1.32 1 0.6 2.44 0.24 3.68 c-0.24 0.92 -0.6 1.76 -0.76 2.68 c-0.2 1 0.16 1.48 1.32 1 c1.92 -0.84 3.48 -2.2 5.08 -3.44 c1.4 -1.12 2.48 -2.04 3.88 -3.16 c0.2 -0.2 0.56 -0.52 0.8 -0.2 c0.16 0.2 -0.2 0.4 -0.4 0.56 c-2.4 2.08 -4.52 3.92 -7.12 5.76 c-0.4 0.28 -0.8 0.52 -1.2 0.68 c-0.88 0.4 -1.8 1.28 -2.72 0.36 z"></path></g></svg>
+		</a>
+		<!--end::Logo-->
+		<!--begin::Wrapper-->
+		<div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+			<!--begin::Form-->
+			<form class="form w-100" novalidate="novalidate" id="account" method="post">
+				<!--begin::Heading-->
+				<div class="text-center mb-10">
+					<!--begin::Title-->
+					<h1 class="text-dark mb-3">Sign In</h1>
+					<!--end::Title-->
+					<!--begin::Link-->
+					<div class="text-gray-400 fw-bold fs-4">New Here? 
+					<a href="identity/account/register" class="link-primary fw-bolder">Create an Account</a></div>
+					<!--end::Link-->
+				</div>
+				<!--begin::Heading-->
+				<!--begin::Input group-->
+				<div class="fv-row mb-10">
+					<!--begin::Label-->
+					<label class="form-label fs-6 fw-bolder text-dark" for="UserName">UserName</label>
+					<!--end::Label-->
+					<!--begin::Input-->
+					<input class="form-control form-control-lg form-control-solid" type="text" name="UserName" id="UserName" autocomplete="off" />
+					<!--end::Input-->
+				</div>
+				<!--end::Input group-->
+				<!--begin::Input group-->
+				<div class="fv-row mb-10">
+					<!--begin::Wrapper-->
+					<div class="d-flex flex-stack mb-2">
+						<!--begin::Label-->
+						<label class="form-label fw-bolder text-dark fs-6 mb-0" for="Password">Password</label>
+						<!--end::Label-->
+						<!--begin::Link-->
+						<a href="identity/account/passwordreset" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
+						<!--end::Link-->
+					</div>
+					<!--end::Wrapper-->
+					<!--begin::Input-->
+					<input class="form-control form-control-lg form-control-solid" type="password" name="Password" id="Password" autocomplete="off" />
+					<!--end::Input-->
+				</div>
+				<!--end::Input group-->
+				<!--begin::Actions-->
+				<div class="text-center">
+					<!--begin::Submit button-->
+					<button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
+						<span class="indicator-label">Continue</span>
+						<span class="indicator-progress">Please wait... 
+						<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+					</button>
+					<!--end::Submit button-->
+				</div>
+				<!--end::Actions-->
+			</form>
+			<!--end::Form-->
+		</div>
+		<!--end::Wrapper-->
+	</div>
+	<!--end::Content-->
+	<!--begin::Footer-->
+	<div class="d-flex flex-center flex-column-auto p-10">
+		<!--begin::Links-->
+		<div class="d-flex align-items-center fw-bold fs-6">
+			<a href="https://n4vry.com" class="text-muted text-hover-primary px-2">Irvan Ramdhany</a>
+		</div>
+		<!--end::Links-->
+	</div>
+	<!--end::Footer-->
+</div>
+<!--end::Authentication - Sign-in-->
+@section Scripts {
+	<script src="js/login.js"></script>
+}
