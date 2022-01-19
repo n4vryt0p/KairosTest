@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Linq;
 
 namespace KairosTest.Services
 {
@@ -15,7 +16,9 @@ namespace KairosTest.Services
             //context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             if (context == null) return;
             context.Database.EnsureCreated();
-            context.Database.Migrate();
+            //if (context.Database.GetPendingMigrations().Any())
+            //    context.Database.Migrate();
+
             if (await context.Users.AnyAsync()) return;
             var userManag = serviceScope.ServiceProvider.GetService<UserManager<IdentityUser>>();
             var user = new IdentityUser { UserName = "admin", Email = "admin@email.com" };
