@@ -1,4 +1,4 @@
-﻿@model KairosTest.Entities.Buku
+﻿@model KairosTest.Models.UsersViewModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -9,7 +9,7 @@
 		<!--begin::Card header-->
 		<div class="card-header">
 			<h3 class="card-title align-items-start flex-column">
-				<span class="card-label fw-bolder text-dark">Buku: @Model.JudulBuku</span>
+				<span class="card-label fw-bolder text-dark">User: @Model.UserName</span>
 			</h3>
 		</div>
 		<!--end::Card header-->
@@ -17,29 +17,13 @@
 		<div class="card-body">
             <dl class="row">
                 <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.JudulBuku)
+                    @Html.DisplayNameFor(model => model.UserName)
                 </dt>
                 <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.JudulBuku)
+                    @Html.DisplayFor(model => model.Email)
                 </dd>
                 <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.Pengarang)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.Pengarang)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.JenisBuku)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.JenisBuku)
-                </dd>
-                <dt class = "col-sm-2">
-                    @Html.DisplayNameFor(model => model.HargaSewa)
-                </dt>
-                <dd class = "col-sm-10">
-                    @Html.DisplayFor(model => model.HargaSewa)
-                </dd>
+                    @Html.DisplayNameFor(model => model.Role)
             </dl>
             <form asp-action="Delete" id="crudBuku">
                 <input type="hidden" asp-for="Id" />
@@ -78,12 +62,12 @@
 						el.setAttribute("data-kt-indicator", "on");
 						el.disabled = !0;
 						$.ajax({
-							type: "POST",
+							type: "GET",
 							url: actionUrl,
 							data: form.serialize(), // serializes the form's elements.
 							success: function (data) {
 								Swal.fire({
-									text: "Sukses, data buku terhapus",
+									text: "Sukses, data user terhapus",
 									icon: "success",
 									buttonsStyling: !1,
 									confirmButtonText: "Ok!",
@@ -91,7 +75,7 @@
 										confirmButton: "btn btn-primary"
 									}
 								}).then((function (e) {
-									window.location.href = "./Bukus";
+									window.location.href = "./Users";
 								}));
 							},
 							error: function (data) {

@@ -77,7 +77,7 @@ KTUtil.onDOMContentLoaded(function () {
 					data: form.serialize(), // serializes the form's elements.
 					success: function (data) {
 						Swal.fire({
-							text: "Sukses, data buku tersimpan",
+							text: "Sukses, data user tersimpan",
 							icon: "success",
 							buttonsStyling: !1,
 							confirmButtonText: "Ok!",
@@ -85,7 +85,7 @@ KTUtil.onDOMContentLoaded(function () {
 								confirmButton: "btn btn-primary"
 							}
 						}).then((function (e) {
-							window.location.href = "./Bukus";
+							window.location.href = "./Users";
 						}));
 					},
 					error: function (data) {

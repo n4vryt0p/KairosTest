@@ -147,23 +147,46 @@ namespace KairosTest.Controllers
         }
 
         // GET: UsersController/Delete/5
-        public ActionResult Delete(string id)
+        public async Task<IActionResult> Delete(string id)
         {
-            return View();
+            if (string.IsNullOrEmpty(id))
+            {
+                return NotFound();
+            }
+
+            var appUser = await _userManager.FindByIdAsync(id);
+            if (appUser == null)
+            {
+                return NotFound();
+            }
+            var result = new UsersViewModel
+            {
+                Id = appUser.Id,
+                UserName = appUser.UserName,
+                Email = appUser.Email,
+                Role = _userManager.GetRolesAsync(appUser).Result.FirstOrDefault()
+            };
+            return View(result);
         }
 
         // POST: UsersController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(string id, IFormCollection collection)
+        public async Task<IActionResult> Delete(string id, IFormCollection collection)
         {
             try
             {
-                return RedirectToAction(nameof(IndexAsync));
+                var use = await _userManager.FindByIdAsync(id);
+                if (use == null)
+                    return NotFound();
+
+                _context.Users.Remove(use);
+                await _context.SaveChangesAsync();
+                return Ok();
             }
             catch
             {
-                return View();
+                return BadRequest();
             }
         }
         private bool UserExists(string id)

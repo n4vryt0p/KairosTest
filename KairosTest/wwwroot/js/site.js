@@ -1,9 +1,7 @@
 ﻿"use strict";
-var oneDay = 24 * 60 * 60 * 1000, diffDays = 0, tl, el, il;
+var oneDay = 24 * 60 * 60 * 1000, diffDays = 0, tl, el, il, dt, table;
 // Class definition
 var KTDatatablesServerSide = function () {
-    // Shared variables
-    var dt, table;
     // Private functions
     var initDatatable = function () {
         dt = $("#kt_datatable_example_1").DataTable({
@@ -191,6 +189,7 @@ KTUtil.onDOMContentLoaded(function () {
                         }).then((function (e) {
                             el.removeAttribute("data-kt-indicator");
                             el.disabled = !1;
+                            dt.ajax.reload();
                         }));
                     },
                     error: function (data) {
