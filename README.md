@@ -1,4 +1,5 @@
-Technologi:
+TEST #1
+Teknologi:
 - .Net Core 5.0.12
 - MVC
 - MSSQL Server min versi 2012
@@ -14,3 +15,7 @@ Data user dummy otomatis terbuat antara lain:
 UI menggunakan bootstrap 5, UI belum 100% selesai
 
 Aplikasi berjalan di url http://localhost:5001
+
+TEST #2
+Teknologi:
+- .Net Core 6.0.1
