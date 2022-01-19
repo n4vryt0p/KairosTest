@@ -20,7 +20,7 @@ namespace KairosTest.Services
             //    context.Database.Migrate();
 
             if (await context.Users.AnyAsync()) return;
-            var userManag = serviceScope.ServiceProvider.GetService<UserManager<IdentityUser>>();
+            using var userManag = serviceScope.ServiceProvider.GetService<UserManager<IdentityUser>>();
             var user = new IdentityUser { UserName = "admin", Email = "admin@email.com" };
             var result = await userManag.CreateAsync(user, "admin");
             if (result.Succeeded)
@@ -36,8 +36,8 @@ namespace KairosTest.Services
                         if (resRol.Succeeded)
                         {
                             userManag.Dispose();
-                            serviceScope.Dispose();
                             context.Dispose();
+                            serviceScope.Dispose();
                         }
                     }
                 }
